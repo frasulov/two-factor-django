@@ -68,10 +68,16 @@ class AdminSiteOTPRequiredMixinRedirSetup(AdminSiteOTPRequired):
 
         return redirect_to_login(redirect_to)
 from django.contrib import admin
+from django.shortcuts import redirect
 admin.site.__class__ = AdminSiteOTPRequiredMixinRedirSetup
+
+
+def redirect_to_admin(request):
+    # Redirect to the '/admin' URL
+    return redirect('/admin/')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(tf_urls, "two_factor")),
-
+    path('', redirect_to_admin)
 ]
