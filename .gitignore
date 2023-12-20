@@ -3,3 +3,4 @@ venv
 db.sqlite3
 .DS_Store
 staticfiles
+fagan-twofactor.pem
