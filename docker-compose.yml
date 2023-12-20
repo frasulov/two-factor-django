@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  backend:
+    image: backend:v0
+    command: python manage.py runserver 0.0.0.0:8000
+    container_name: backend
+    volumes:
+      - .:/code
+    ports:
+      - '80:8000'
+    networks:
+      - project-net
+
+networks:
+  project-net:
+    external: true
